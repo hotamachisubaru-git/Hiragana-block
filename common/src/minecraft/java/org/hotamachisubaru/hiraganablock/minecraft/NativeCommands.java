@@ -59,7 +59,8 @@ public final class NativeCommands {
             var player = c.getSource().getPlayerOrException();
             var letter = new LetterBlock(StringArgumentType.getString(c,"kana"),color);
             var stack = new ItemStack(NativeBlocks.get(letter).asItem(),count);
-            if (!player.getInventory().add(stack)) player.drop(stack,false);
+            if (player.getInventory().getFreeSlot() < 0) throw error("インベントリに空きを作ってください。");
+            player.getInventory().add(stack);
             return 1;
         } catch (IllegalArgumentException e) { throw error(e.getMessage()); }
     }
