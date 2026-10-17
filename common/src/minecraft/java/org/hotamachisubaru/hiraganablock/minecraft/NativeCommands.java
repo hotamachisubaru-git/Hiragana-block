@@ -17,7 +17,6 @@ import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.permissions.Permissions;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.LevelResource;
 import org.hotamachisubaru.hiraganablock.core.*;
@@ -26,7 +25,7 @@ public final class NativeCommands {
     private NativeCommands() { }
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         var root = Commands.literal("hiragana")
-                .requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER))
+                .requires(source -> source.hasPermission(2))
                 .executes(c -> { c.getSource().sendSuccess(() -> Component.literal("/hb give <文字> [色] [個数] | answer <答え> | check <x> <y> <z> <方向> | judge <答え> <回答>"), false); return 1; });
         root.then(Commands.literal("give").then(Commands.argument("kana", StringArgumentType.word())
                 .suggests((c,b) -> SharedSuggestionProvider.suggest(KanaCatalog.ALL,b))
@@ -46,7 +45,7 @@ public final class NativeCommands {
                     } catch (IllegalArgumentException e) { throw error(e.getMessage()); }
                 }))));
         var node = dispatcher.register(root);
-        dispatcher.register(Commands.literal("hb").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)).redirect(node));
+        dispatcher.register(Commands.literal("hb").requires(source -> source.hasPermission(2)).redirect(node));
     }
 
     private static CommandSyntaxException error(String message) { return new SimpleCommandExceptionType(Component.literal(message)).create(); }
@@ -59,7 +58,8 @@ public final class NativeCommands {
             var player = c.getSource().getPlayerOrException();
             var letter = new LetterBlock(StringArgumentType.getString(c,"kana"),color);
             var stack = new ItemStack(NativeBlocks.get(letter).asItem(),count);
-            if (!player.getInventory().add(stack)) player.drop(stack,false);
+            if (player.getInventory().getFreeSlot() < 0) throw error("インベントリに空きを作ってください。");
+            player.getInventory().add(stack);
             return 1;
         } catch (IllegalArgumentException e) { throw error(e.getMessage()); }
     }

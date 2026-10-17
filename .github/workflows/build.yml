@@ -13,7 +13,9 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '25'
+          java-version: |
+            17
+            21
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew && ./gradlew -Pplatform=common :common:check
       - uses: actions/setup-python@v5
@@ -26,13 +28,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [paper, fabric, forge, neoforge]
+        platform: [paper, fabric, forge]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '25'
+          java-version: |
+            17
+            21
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew && ./gradlew -Pplatform=${{ matrix.platform }} :${{ matrix.platform }}:build
       - uses: actions/upload-artifact@v4

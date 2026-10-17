@@ -1,3 +1,7 @@
+# Minecraft 1.20.1 向けブランチ
+
+このブランチのMODは **Minecraft 1.20.1専用** です。ビルドにはJDK 21を使用し、1.20.1のForgeではJDK 17もインストールしてください。
+
 # Hiragana Block / ひらがなブロック
 
 白いひらがなを表示する、黒・緑・黄の文字ブロックです。
@@ -26,7 +30,7 @@ Paper版ではインベントリ内は通常の色付きコンクリート＋文
 ## 対応バージョン
 
 1.20.1〜26.3を移植対象としていますが、**全バージョンの動作確認が済んだという意味ではありません**。
-mainは26.3向けMOD実装と、1.20.1 APIを基準にしたPaper実装を含みます。
+このブランチは1.20.1向けMOD実装と、1.20.1 APIを基準にしたPaper実装を含みます。
 実際のビルド・実機確認の状況は [docs/compatibility.md](docs/compatibility.md) を参照してください。
 
 ## 操作
@@ -66,7 +70,7 @@ MOD版ではクリエイティブの建築ブロック欄、またはコマン�
 
 ## ビルド
 
-mainはJDK 25を使用します。Windowsでは `./gradlew` を `gradlew.bat` に置き換えてください。
+このブランチはJDK 21でGradleを実行します。Windowsでは `./gradlew` を `gradlew.bat` に置き換えてください。
 
 ```sh
 ./gradlew -Pplatform=common :common:check
