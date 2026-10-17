@@ -27,6 +27,7 @@ Paper版ではインベントリ内は通常の色付きコンクリート＋文
 
 1.20.1〜26.3を移植対象としていますが、**全バージョンの動作確認が済んだという意味ではありません**。
 mainは26.3向けMOD実装と、1.20.1 APIを基準にしたPaper実装を含みます。
+旧版は [`mc/1.20.1`](https://github.com/hotamachisubaru-git/Hiragana-block/tree/mc/1.20.1) と [`mc/1.21.1`](https://github.com/hotamachisubaru-git/Hiragana-block/tree/mc/1.21.1) に分けています。
 実際のビルド・実機確認の状況は [docs/compatibility.md](docs/compatibility.md) を参照してください。
 
 ## 操作
