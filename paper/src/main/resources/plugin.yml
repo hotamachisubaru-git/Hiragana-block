@@ -1,0 +1,17 @@
+name: HiraganaBlock
+version: '${version}'
+main: org.hotamachisubaru.hiraganablock.paper.HiraganaPlugin
+api-version: '1.20'
+description: 白いひらがなを表示する黒・緑・黄の文字ブロック
+author: hotamachisubaru
+website: https://github.com/hotamachisubaru-git/Hiragana-block
+commands:
+  hiragana:
+    aliases: [hb]
+    description: ひらがなブロックの入手・判定
+    permission: hiraganablock.admin
+    usage: /hb menu | give <文字> [black|green|yellow] [個数] | answer <答え> | check <x> <y> <z> <east|west|south|north> | judge <答え> <回答>
+permissions:
+  hiraganablock.admin:
+    description: ブロックの入手・正解設定・判定を行う
+    default: op

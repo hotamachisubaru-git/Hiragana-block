@@ -1,0 +1,15 @@
+plugins { id 'base' }
+allprojects {
+    group = rootProject.mod_group
+    version = rootProject.mod_version
+    repositories { mavenCentral() }
+}
+subprojects {
+    plugins.withId('java') {
+        tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+        tasks.withType(AbstractArchiveTask).configureEach {
+            preserveFileTimestamps = false
+            reproducibleFileOrder = true
+        }
+    }
+}

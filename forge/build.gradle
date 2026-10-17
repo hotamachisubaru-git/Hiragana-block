@@ -1,0 +1,18 @@
+plugins { id 'java'; id 'net.minecraftforge.gradle' version '7.0.23' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+minecraft {
+    runs {
+        register('client')
+        register('server') { args '--nogui' }
+    }
+}
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+}
+dependencies { implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}") }
+sourceSets.main.java.srcDirs rootProject.file('common/src/main/java'), rootProject.file('common/src/minecraft/java')
+sourceSets.main.resources.srcDirs rootProject.file('assets/catalog'), rootProject.file('assets/generated'), rootProject.file('assets/data-modern')
+processResources { filesMatching('META-INF/mods.toml') { expand(version: project.version, minecraft_version: minecraft_version, forge_version: forge_version) } }
+jar { archiveBaseName = "HiraganaBlock-forge-mc${minecraft_version}"; from rootProject.file('LICENSE'); from(rootProject.file('assets/OFL-NotoSansJP.txt')) }

@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hiraganablock:block/kana_atlas"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            11,
+            3.0,
+            12,
+            3.5
+          ],
+          "texture": "#all",
+          "cullface": "north"
+        },
+        "south": {
+          "uv": [
+            11,
+            3.0,
+            12,
+            3.5
+          ],
+          "texture": "#all",
+          "cullface": "south"
+        },
+        "east": {
+          "uv": [
+            11,
+            3.0,
+            12,
+            3.5
+          ],
+          "texture": "#all",
+          "cullface": "east"
+        },
+        "west": {
+          "uv": [
+            11,
+            3.0,
+            12,
+            3.5
+          ],
+          "texture": "#all",
+          "cullface": "west"
+        },
+        "up": {
+          "uv": [
+            11,
+            3.0,
+            12,
+            3.5
+          ],
+          "texture": "#all",
+          "cullface": "up"
+        },
+        "down": {
+          "uv": [
+            11,
+            3.0,
+            12,
+            3.5
+          ],
+          "texture": "#all",
+          "cullface": "down"
+        }
+      }
+    }
+  ]
+}

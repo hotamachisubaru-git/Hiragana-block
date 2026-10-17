@@ -1,0 +1,14 @@
+plugins { id 'java' }
+repositories { maven { url = 'https://repo.papermc.io/repository/maven-public/' } }
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT'
+    implementation project(':common')
+}
+tasks.withType(JavaCompile).configureEach { options.release = 17 }
+processResources { filesMatching('plugin.yml') { expand(version: project.version) } }
+jar {
+    dependsOn ':common:classes'
+    from project(':common').sourceSets.main.output
+    from rootProject.file('LICENSE')
+    archiveBaseName = 'HiraganaBlock-paper-mc1.20.1+'
+}

@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[66,)"
+license="MIT"
+[[mods]]
+modId="hiraganablock"
+version="${version}"
+displayName="Hiragana Block"
+authors="hotamachisubaru"
+description='''ひらがな87文字を黒・緑・黄で追加します。'''
+[[dependencies.hiraganablock]]
+modId="forge"
+mandatory=true
+versionRange="[${forge_version},)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.hiraganablock]]
+modId="minecraft"
+mandatory=true
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="BOTH"

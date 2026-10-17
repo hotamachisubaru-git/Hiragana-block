@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "hiraganablock",
+  "version": "${version}",
+  "name": "Hiragana Block",
+  "description": "ひらがな87文字を黒・緑・黄で追加します。",
+  "authors": ["hotamachisubaru"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {"main": ["org.hotamachisubaru.hiraganablock.fabric.HiraganaFabric"]},
+  "depends": {"fabricloader": ">=${loader_version}", "minecraft": "${minecraft_version}", "java": ">=25", "fabric-api": "*"}
+}
