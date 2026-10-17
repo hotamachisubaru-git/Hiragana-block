@@ -17,7 +17,7 @@ public final class HiraganaNeoForge {
     public HiraganaNeoForge(IEventBus bus) {
         for (var kana : KanaCatalog.ALL) for (var color : BlockColor.values()) {
             var letter = new LetterBlock(kana,color);
-            var block = BLOCKS.registerSimpleBlock(letter.id(), props -> props.strength(1.5f,6f));
+            var block = BLOCKS.registerSimpleBlock(letter.id(), net.minecraft.world.level.block.state.BlockBehaviour.Properties.of().strength(1.5f,6f));
             ITEMS.registerSimpleBlockItem(letter.id(),block);
             NativeBlocks.add(letter,block);
         }

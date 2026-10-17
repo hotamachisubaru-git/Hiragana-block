@@ -1,12 +1,13 @@
-plugins { id 'net.fabricmc.fabric-loom' version "${loom_version}" }
+plugins { id 'fabric-loom' version "${loom_version}" }
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 }
 sourceSets.main.java.srcDirs rootProject.file('common/src/main/java'), rootProject.file('common/src/minecraft/java')
 sourceSets.main.resources.srcDirs rootProject.file('assets/catalog'), rootProject.file('assets/generated'), rootProject.file('assets/data-modern')
-tasks.withType(JavaCompile).configureEach { options.release = 25 }
-java { sourceCompatibility = JavaVersion.VERSION_25; targetCompatibility = JavaVersion.VERSION_25 }
+tasks.withType(JavaCompile).configureEach { options.release = 21 }
+java { sourceCompatibility = JavaVersion.VERSION_21; targetCompatibility = JavaVersion.VERSION_21 }
 processResources { filesMatching('fabric.mod.json') { expand(version: project.version, minecraft_version: minecraft_version, loader_version: loader_version) } }
 jar { archiveBaseName = "HiraganaBlock-fabric-mc${minecraft_version}"; from rootProject.file('LICENSE'); from(rootProject.file('assets/OFL-NotoSansJP.txt')) }
